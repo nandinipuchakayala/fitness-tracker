@@ -1,0 +1,1861 @@
+/* =========================================================
+   FITTRACK - CREATIVE CONTRAST DESIGN
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #efe6d2;
+    color: #26332d;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    height: 78px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #f6eddc;
+
+    border-bottom: 2px solid #d7c9ad;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 25px;
+    font-weight: 900;
+
+    color: #17483e;
+}
+
+.logo-icon {
+    font-size: 29px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 34px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+
+    color: #657068;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #b94d38;
+}
+
+.profile-btn {
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: #17483e;
+    color: #f5df8b;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    transform: rotate(-3deg);
+
+    transition: 0.25s;
+}
+
+.profile-btn:hover {
+    background: #b94d38;
+    transform: rotate(3deg) scale(1.08);
+}
+
+
+/* =========================================================
+   HOME - WARM LIGHT / ORGANIC
+   ========================================================= */
+
+.hero {
+    min-height: 540px;
+
+    padding: 80px 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 8% 20%,
+            #d4e49b 0,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 88% 80%,
+            #f0c982 0,
+            transparent 24%
+        ),
+        #eee4cf;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -90px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: #d7a7a0;
+
+    opacity: 0.35;
+}
+
+.hero-content {
+    max-width: 670px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.small-title {
+    color: #b94d38;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    font-size: clamp(43px, 5vw, 70px);
+
+    line-height: 1.03;
+
+    font-weight: 900;
+
+    color: #17483e;
+
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    display: block;
+
+    color: #4d8067;
+}
+
+.hero-text {
+    max-width: 570px;
+
+    color: #606b63;
+
+    font-size: 18px;
+
+    margin-bottom: 32px;
+}
+
+.start-btn {
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 16px 7px 16px 7px;
+
+    background: #17483e;
+
+    color: #f8e7a5;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background: #b94d38;
+
+    transform: translateY(-4px);
+}
+
+.hero-features {
+    display: flex;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+
+    margin-top: 32px;
+}
+
+.hero-features span {
+    color: #3e5d51;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.hero-image {
+    width: 360px;
+    height: 360px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 48% 52% 35% 65%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17483e,
+            #2d6958
+        );
+
+    box-shadow:
+        24px 22px 0 #b94d38,
+        0 25px 45px rgba(47, 59, 49, 0.2);
+
+    transform: rotate(4deg);
+}
+
+.hero-image::before {
+    content: "🏋️";
+
+    position: absolute;
+
+    font-size: 145px;
+
+    transform: rotate(-4deg);
+
+    filter:
+        drop-shadow(
+            0 13px 8px rgba(0, 0, 0, 0.25)
+        );
+}
+
+.hero-image::after {
+    content: "TRAIN • SWEAT • GROW";
+
+    position: absolute;
+
+    bottom: 32px;
+
+    color: #e8dc86;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   COMMON
+   ========================================================= */
+
+.stats-section,
+.health-section,
+.activities-section {
+    padding: 80px 8%;
+}
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+}
+
+.section-label {
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 5px;
+}
+
+.section-heading h2 {
+    font-size: 35px;
+}
+
+
+/* =========================================================
+   TODAY'S PROGRESS
+   DARK FOREST + ANGLED CARDS
+   ========================================================= */
+
+.stats-section {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 5% 90%,
+            #24584c 0,
+            transparent 25%
+        ),
+        #193b36;
+
+    color: #f7f0dc;
+}
+
+.stats-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    top: -130px;
+
+    border-radius: 50%;
+
+    background: #5c3e50;
+
+    opacity: 0.55;
+}
+
+.stats-section .section-label {
+    color: #e7d76f;
+}
+
+.stats-section .section-heading h2 {
+    color: #f7f0dc;
+}
+
+.date {
+    padding: 10px 18px;
+
+    border-radius: 30px 8px 30px 8px;
+
+    background: #e7d76f;
+
+    color: #193b36;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   PROGRESS GRID
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   PROGRESS CARDS - DIFFERENT SHAPES
+   ========================================================= */
+
+.stat-card {
+    min-height: 235px;
+
+    padding: 27px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    color: #26332d;
+
+    box-shadow:
+        0 18px 30px rgba(0, 0, 0, 0.18);
+
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) rotate(0deg);
+}
+
+
+/* Steps - slanted */
+
+.steps-card {
+    background: #b9df65;
+
+    border-radius: 30px 8px 30px 8px;
+
+    transform: rotate(-1.2deg);
+
+    border-left: 7px solid #315b43;
+}
+
+
+/* Calories - rounder */
+
+.calories-card {
+    background: #e96b52;
+
+    border-radius: 8px 32px 8px 32px;
+
+    transform: rotate(1deg);
+
+    border-right: 7px solid #873b31;
+}
+
+
+/* Workouts - asymmetric */
+
+.workouts-card {
+    background: #65cdbd;
+
+    border-radius: 35px 10px 10px 35px;
+
+    transform: rotate(-0.8deg);
+
+    border-bottom: 7px solid #216b63;
+}
+
+
+/* Goal - angular */
+
+.goal-card {
+    background: #e6c65e;
+
+    border-radius: 10px 35px 10px 35px;
+
+    transform: rotate(1.2deg);
+
+    border-top: 7px solid #725c19;
+}
+
+
+.stat-icon {
+    font-size: 31px;
+
+    margin-bottom: 12px;
+}
+
+.steps-card .stat-icon {
+    color: #315b43;
+}
+
+.calories-card .stat-icon {
+    color: #873b31;
+}
+
+.workouts-card .stat-icon {
+    color: #216b63;
+}
+
+.goal-card .stat-icon {
+    color: #725c19;
+}
+
+.stat-info p {
+    color: #30443b;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.stat-info h3 {
+    color: #1f302a;
+
+    font-size: 31px;
+
+    margin: 3px 0;
+}
+
+.stat-info span {
+    color: #52635b;
+
+    font-size: 13px;
+}
+
+.stat-info input {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 10px 12px;
+
+    border: 2px solid rgba(23, 48, 42, 0.14);
+
+    border-radius: 12px;
+
+    background: rgba(255, 248, 225, 0.65);
+
+    color: #172b25;
+
+    outline: none;
+}
+
+.stat-info input::placeholder {
+    color: #68746e;
+}
+
+.stat-info button {
+    margin-top: 8px;
+
+    padding: 9px 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #193b36;
+
+    color: #f7e69b;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.stat-info button:hover {
+    background: #b94d38;
+
+    transform: translateY(-2px);
+}
+
+.progress-circle,
+.stat-badge {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    min-width: 50px;
+
+    padding: 8px 11px;
+
+    border-radius: 25px 7px 25px 7px;
+
+    background: #193b36;
+
+    color: #f7e69b;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   HEALTH MONITORING
+   PALE SAGE / PEACH + CAPSULE CARDS
+   ========================================================= */
+
+.health-section {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 95% 15%,
+            #e7c4a7 0,
+            transparent 22%
+        ),
+        #dce4ce;
+}
+
+.health-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    left: -130px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: #a8c4aa;
+
+    opacity: 0.5;
+}
+
+.health-section .section-label {
+    color: #a64b3c;
+}
+
+.health-section .section-heading h2 {
+    color: #244b40;
+}
+
+.health-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HEALTH CARDS - CAPSULE / ORGANIC
+   ========================================================= */
+
+.health-card {
+    min-height: 280px;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    color: #26332d;
+
+    box-shadow:
+        0 16px 28px rgba(47, 61, 48, 0.14);
+
+    transition: 0.3s;
+}
+
+.health-card:hover {
+    transform: translateY(-8px);
+}
+
+
+/* Calorie */
+
+.calorie-intake-card {
+    background: #f1c84c;
+
+    border-radius: 50px 18px 50px 18px;
+
+    border-left: 8px solid #9b6e12;
+}
+
+
+/* Heart */
+
+.heart-rate-card {
+    background: #e98a72;
+
+    border-radius: 18px 50px 18px 50px;
+
+    border-right: 8px solid #963e32;
+}
+
+
+/* Sleep */
+
+.sleep-card {
+    background: #91d4ae;
+
+    border-radius: 55px 20px 20px 55px;
+
+    border-bottom: 8px solid #387658;
+}
+
+
+.health-icon {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+.calorie-intake-card .health-icon {
+    color: #73500b;
+}
+
+.heart-rate-card .health-icon {
+    color: #7d2f28;
+}
+
+.sleep-card .health-icon {
+    color: #276346;
+}
+
+.health-info p {
+    color: #3b4c43;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.health-info h3 {
+    color: #1c3028;
+
+    font-size: 35px;
+
+    margin: 3px 0;
+}
+
+.health-info span {
+    color: #56645d;
+
+    font-size: 14px;
+}
+
+.health-info input {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 10px 12px;
+
+    background: rgba(255, 248, 232, 0.72);
+
+    color: #26332d;
+
+    border: 2px solid rgba(38, 51, 45, 0.12);
+
+    border-radius: 13px;
+
+    outline: none;
+}
+
+.health-info input::placeholder {
+    color: #69736e;
+}
+
+.health-info button {
+    margin-top: 8px;
+
+    padding: 9px 13px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #244b40;
+
+    color: #f7e69b;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.health-info button:hover {
+    background: #a64b3c;
+}
+
+.health-badge {
+    position: absolute;
+
+    top: 22px;
+    right: 22px;
+
+    padding: 7px 14px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 246, 220, 0.7);
+
+    color: #244b40;
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   TODAY'S ACTIVITIES
+   DARK BURGUNDY / PLUM + PILL CARDS
+   ========================================================= */
+
+.activities-section {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            #594055 0,
+            transparent 25%
+        ),
+        #342936;
+}
+
+.activities-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 150px;
+
+    left: -100px;
+    bottom: -60px;
+
+    border-radius: 50%;
+
+    background: #725044;
+
+    opacity: 0.5;
+}
+
+.activities-section .section-label {
+    color: #e6d16d;
+}
+
+.activities-section .section-heading h2 {
+    color: #f5ead4;
+}
+
+.activities-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   ACTIVITY CARDS - PILL / NOTCHED
+   ========================================================= */
+
+.activity-card {
+    min-height: 140px;
+
+    padding: 22px 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    position: relative;
+
+    color: #28342e;
+
+    box-shadow:
+        0 17px 30px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.activity-card:hover {
+    transform: translateX(7px);
+}
+
+
+/* Running */
+
+.running {
+    background: #ed8267;
+
+    border-radius: 70px 20px 70px 20px;
+}
+
+.running .activity-icon {
+    background: #823d35;
+}
+
+
+/* Strength */
+
+.strength {
+    background: #b9df65;
+
+    border-radius: 20px 70px 20px 70px;
+}
+
+.strength .activity-icon {
+    background: #365b3c;
+}
+
+
+/* Cycling */
+
+.cycling {
+    background: #62cdbd;
+
+    border-radius: 70px 20px 20px 70px;
+}
+
+.cycling .activity-icon {
+    background: #21625d;
+}
+
+
+/* Yoga */
+
+.yoga {
+    background: #e8c75c;
+
+    border-radius: 20px 70px 70px 20px;
+}
+
+.yoga .activity-icon {
+    background: #70551a;
+}
+
+
+.activity-icon {
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 31px;
+
+    color: white;
+
+    flex-shrink: 0;
+}
+
+.activity-card h3 {
+    color: #27342e;
+
+    font-size: 20px;
+
+    margin-bottom: 4px;
+}
+
+.activity-card p {
+    color: #4d5c55;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.activity-arrow {
+    margin-left: auto;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 247, 224, 0.72);
+
+    color: #293831;
+
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+.view-all {
+    padding: 10px 19px;
+
+    border: 2px solid #e6d16d;
+
+    border-radius: 25px 8px 25px 8px;
+
+    background: transparent;
+
+    color: #e6d16d;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.view-all:hover {
+    background: #e6d16d;
+
+    color: #342936;
+}
+
+
+/* =========================================================
+   MOTIVATION - WARM LIGHT
+   ========================================================= */
+
+.motivation {
+    padding: 58px 8%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            #e7b56d 0,
+            transparent 25%
+        ),
+        #f0dfaa;
+
+    color: #29463c;
+}
+
+.motivation::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -170px;
+    bottom: -180px;
+
+    border-radius: 50%;
+
+    background: #9dbf8d;
+
+    opacity: 0.5;
+}
+
+.motivation-icon {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 25px 8px 25px 8px;
+
+    background: #244b40;
+
+    font-size: 34px;
+}
+
+.motivation-label {
+    color: #a64b3c;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.motivation h2 {
+    color: #244b40;
+
+    font-size: 29px;
+
+    margin: 5px 0;
+}
+
+.motivation h2 span {
+    color: #a64b3c;
+}
+
+.motivation p {
+    color: #59675f;
+}
+
+.motivation-target {
+    margin-left: auto;
+
+    min-width: 130px;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.motivation-target span {
+    display: block;
+
+    font-size: 30px;
+}
+
+.motivation-target strong {
+    display: block;
+
+    font-size: 32px;
+
+    color: #a64b3c;
+}
+
+.motivation-target small {
+    color: #59675f;
+}
+
+
+/* =========================================================
+   FOOTER - DEEP GREEN
+   ========================================================= */
+
+footer {
+    padding: 42px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #163d37,
+            #244f45
+        );
+
+    color: #f3ead5;
+
+    text-align: center;
+}
+
+.footer-logo {
+    color: #e7d76f;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: #b7c8bd;
+}
+
+footer .copyright {
+    margin-top: 10px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .health-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .navbar nav {
+        gap: 16px;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .hero-features {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 290px;
+        height: 290px;
+    }
+
+    .health-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .motivation {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .motivation-target {
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 18px 5%;
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .navbar nav {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 15px;
+    }
+
+    .stats-section,
+    .health-section,
+    .activities-section {
+        padding: 55px 5%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 55px 5%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .hero-image::before {
+        font-size: 105px;
+    }
+
+    .motivation {
+        padding: 40px 5%;
+    }
+}/* =========================================================
+   OVERALL HEALTH SUMMARY
+   DEEP TEAL + WARM CORAL CONTRAST
+   ========================================================= */
+
+.overall-health-section {
+    padding: 70px 8%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            #d98b67 0,
+            transparent 24%
+        ),
+        #c8d8d0;
+}
+
+
+/* Decorative shape */
+
+.overall-health-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    left: -100px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: #7a9e91;
+
+    opacity: 0.55;
+}
+
+
+/* Main summary card */
+
+.health-summary-card {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 38px 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: #17483e;
+
+    color: #f5ead4;
+
+    border-radius: 65px 18px 65px 18px;
+
+    border-right: 9px solid #d96b4f;
+
+    box-shadow:
+        0 20px 35px rgba(31, 57, 49, 0.22);
+
+    transition: 0.3s;
+}
+
+
+.health-summary-card:hover {
+    transform: translateY(-6px);
+}
+
+
+/* Summary icon */
+
+.summary-icon {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #e6c65e;
+
+    color: #17483e;
+
+    font-size: 38px;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Text */
+
+.summary-content {
+    flex: 1;
+}
+
+.summary-content .section-label {
+    color: #e6c65e;
+
+    margin-bottom: 5px;
+}
+
+.summary-content h2 {
+    color: #f7f0dc;
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+}
+
+.summary-content h3 {
+    color: #d96b4f;
+
+    font-size: 22px;
+
+    margin-bottom: 5px;
+}
+
+.summary-content p:last-child {
+    color: #c9d8d1;
+
+    font-size: 15px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .overall-health-section {
+        padding: 55px 5%;
+    }
+
+    .health-summary-card {
+        padding: 30px 25px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        border-radius: 45px 15px 45px 15px;
+    }
+
+    .summary-content h2 {
+        font-size: 25px;
+    }
+
+    .summary-content h3 {
+        font-size: 19px;
+    }
+}/* =========================================================
+   PERSONALIZED RECOMMENDATION
+   MUSTARD + DEEP PLUM CONTRAST
+   ========================================================= */
+
+.recommendation-section {
+    padding: 65px 8%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 80%,
+            #c98f68 0,
+            transparent 24%
+        ),
+        #ddd0b8;
+}
+
+
+/* Decorative shape */
+
+.recommendation-section::after {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -90px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background: #8a6a7d;
+
+    opacity: 0.5;
+}
+
+
+/* Main recommendation card */
+
+.recommendation-card {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 38px 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: #51364d;
+
+    color: #f6edda;
+
+    border-radius: 22px 65px 22px 65px;
+
+    border-left: 9px solid #e4c65a;
+
+    box-shadow:
+        0 20px 35px rgba(58, 42, 53, 0.22);
+
+    transition: 0.3s;
+}
+
+
+.recommendation-card:hover {
+    transform: translateY(-6px);
+}
+
+
+/* Recommendation icon */
+
+.recommendation-icon {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 22px 50% 22px 50%;
+
+    background: #e4c65a;
+
+    color: #51364d;
+
+    font-size: 38px;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Text */
+
+.recommendation-content {
+    flex: 1;
+}
+
+.recommendation-content .section-label {
+    color: #e4c65a;
+
+    margin-bottom: 5px;
+}
+
+.recommendation-content h2 {
+    color: #fff4d8;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.recommendation-content p:last-child {
+    color: #dbcfd8;
+
+    font-size: 16px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .recommendation-section {
+        padding: 50px 5%;
+    }
+
+    .recommendation-card {
+        padding: 30px 25px;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        border-radius: 45px 15px 45px 15px;
+    }
+
+    .recommendation-content h2 {
+        font-size: 25px;
+    }
+
+    .recommendation-content p:last-child {
+        font-size: 14px;
+    }
+}/* =========================================================
+   PROGRESS REPORT
+   ========================================================= */
+
+.report-section {
+    padding: 75px 8%;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 90% 20%,
+            #8aa58d 0,
+            transparent 25%
+        ),
+        #e6d4bd;
+}
+
+.report-section::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    left: -100px;
+    bottom: -110px;
+    border-radius: 50%;
+    background: #d77b61;
+    opacity: 0.45;
+}
+
+.report-card {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+    background: #243f3a;
+    border-radius: 30px 70px 30px 70px;
+    border-top: 8px solid #e4c65a;
+    box-shadow:
+        0 20px 35px rgba(35, 55, 49, 0.25);
+}
+
+.report-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+.report-icon {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e4c65a;
+    font-size: 34px;
+    flex-shrink: 0;
+}
+
+.report-header h3 {
+    color: #fff3d5;
+    font-size: 27px;
+    margin-bottom: 4px;
+}
+
+.report-header p {
+    color: #c8d7d0;
+    font-size: 14px;
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.report-item {
+    min-height: 105px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f0dfaa;
+    border-radius: 20px 45px 20px 45px;
+    transition: 0.3s;
+}
+
+.report-item:nth-child(2) {
+    background: #e98a72;
+}
+
+.report-item:nth-child(3) {
+    background: #91d4ae;
+}
+
+.report-item:nth-child(4) {
+    background: #b9df65;
+}
+
+.report-item:nth-child(5) {
+    background: #65cdbd;
+}
+
+.report-item:nth-child(6) {
+    background: #e6c65e;
+}
+
+.report-item:hover {
+    transform: translateY(-5px);
+}
+
+.report-item > span {
+    font-size: 27px;
+}
+
+.report-item small {
+    display: block;
+    color: #3b4a43;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 3px;
+}
+
+.report-item strong {
+    display: block;
+    color: #21332d;
+    font-size: 20px;
+}
+
+.report-summary {
+    margin-top: 25px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #51364d;
+    border-left: 7px solid #d96b4f;
+    border-radius: 18px 45px 18px 45px;
+}
+
+.report-summary span {
+    font-size: 25px;
+}
+
+.report-summary p {
+    color: #f4e9d4;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* ================= REPORT RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+
+    .report-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .report-section {
+        padding: 55px 5%;
+    }
+
+    .report-card {
+        padding: 28px 22px;
+        border-radius: 40px 18px 40px 18px;
+    }
+
+    .report-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .report-header h3 {
+        font-size: 24px;
+    }
+
+    .report-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-summary {
+        text-align: center;
+        flex-direction: column;
+    }
+
+}

@@ -1,7 +1,33 @@
-// =============================
-// FITTRACK - FITNESS TRACKER
-// =============================
 
+ // =============================
+ // FITTRACK - FITNESS TRACKER
+ // =============================
+ // REDUX STORE
+
+const initialState = {
+    workouts: [],
+    steps: 0,
+    calories: 0,
+    goal: 0,
+    activities: []
+};
+
+function fitnessReducer(state = initialState, action) {
+    switch (action.type) {
+        case "UPDATE_DASHBOARD":
+            return {
+                ...state,
+                ...action.payload
+            };
+
+        default:
+            return state;
+    }
+}
+
+const fitnessStore = Redux.createStore(fitnessReducer);
+
+const API_URL = "http://localhost:3000";
 
 // =============================
 // ELEMENTS
@@ -53,7 +79,7 @@ const recommendationMessage =
 
 
 // =============================
-// STEP TRACKER 👣
+// STEP TRACKER
 // =============================
 
 updateStepsButton.addEventListener("click", function () {
@@ -61,16 +87,12 @@ updateStepsButton.addEventListener("click", function () {
     const steps = Number(stepsInput.value);
     const stepGoal = 10000;
 
-    if (steps < 0 || stepsInput.value === "") {
+    if (stepsInput.value === "" || steps < 0) {
         alert("Please enter a valid number of steps.");
         return;
     }
 
-    let percentage = (steps / stepGoal) * 100;
-
-    if (percentage > 100) {
-        percentage = 100;
-    }
+    let percentage = Math.min((steps / stepGoal) * 100, 100);
 
     stepsValue.textContent = steps.toLocaleString();
     stepsProgress.textContent = Math.round(percentage) + "%";
@@ -82,7 +104,7 @@ updateStepsButton.addEventListener("click", function () {
 
 
 // =============================
-// CALORIES BURNED 🔥
+// CALORIES BURNED
 // =============================
 
 updateCaloriesButton.addEventListener("click", function () {
@@ -90,16 +112,12 @@ updateCaloriesButton.addEventListener("click", function () {
     const calories = Number(caloriesInput.value);
     const calorieGoal = 2000;
 
-    if (calories < 0 || caloriesInput.value === "") {
+    if (caloriesInput.value === "" || calories < 0) {
         alert("Please enter a valid number of calories.");
         return;
     }
 
-    let percentage = (calories / calorieGoal) * 100;
-
-    if (percentage > 100) {
-        percentage = 100;
-    }
+    let percentage = Math.min((calories / calorieGoal) * 100, 100);
 
     caloriesValue.textContent = calories.toLocaleString();
     caloriesProgress.textContent = Math.round(percentage) + "%";
@@ -110,7 +128,7 @@ updateCaloriesButton.addEventListener("click", function () {
 
 
 // =============================
-// WORKOUTS TRACKER 💪
+// WORKOUTS TRACKER
 // =============================
 
 updateWorkoutsButton.addEventListener("click", function () {
@@ -118,16 +136,12 @@ updateWorkoutsButton.addEventListener("click", function () {
     const workouts = Number(workoutsInput.value);
     const workoutGoal = 5;
 
-    if (workouts < 0 || workoutsInput.value === "") {
+    if (workoutsInput.value === "" || workouts < 0) {
         alert("Please enter a valid number of workouts.");
         return;
     }
 
-    let percentage = (workouts / workoutGoal) * 100;
-
-    if (percentage > 100) {
-        percentage = 100;
-    }
+    let percentage = Math.min((workouts / workoutGoal) * 100, 100);
 
     workoutsValue.textContent = workouts;
     workoutsProgress.textContent = Math.round(percentage) + "%";
@@ -139,18 +153,14 @@ updateWorkoutsButton.addEventListener("click", function () {
 
 
 // =============================
-// GOAL TRACKER 🎯
+// GOAL TRACKER
 // =============================
 
 updateGoalButton.addEventListener("click", function () {
 
     const goal = Number(goalInput.value);
 
-    if (
-        goal < 0 ||
-        goal > 100 ||
-        goalInput.value === ""
-    ) {
+    if (goalInput.value === "" || goal < 0 || goal > 100) {
         alert("Please enter a goal between 0 and 100.");
         return;
     }
@@ -174,7 +184,7 @@ updateGoalButton.addEventListener("click", function () {
 
 
 // =============================
-// CALORIE INTAKE 🍎
+// CALORIE INTAKE
 // =============================
 
 updateIntakeButton.addEventListener("click", function () {
@@ -182,16 +192,12 @@ updateIntakeButton.addEventListener("click", function () {
     const intake = Number(intakeInput.value);
     const intakeGoal = 2000;
 
-    if (intake < 0 || intakeInput.value === "") {
+    if (intakeInput.value === "" || intake < 0) {
         alert("Please enter a valid calorie intake.");
         return;
     }
 
-    let percentage = (intake / intakeGoal) * 100;
-
-    if (percentage > 100) {
-        percentage = 100;
-    }
+    let percentage = Math.min((intake / intakeGoal) * 100, 100);
 
     intakeValue.textContent = intake.toLocaleString();
     intakeProgress.textContent = Math.round(percentage) + "%";
@@ -201,7 +207,7 @@ updateIntakeButton.addEventListener("click", function () {
 
 
 // =============================
-// HEART RATE ❤️
+// HEART RATE
 // =============================
 
 updateHeartRateButton.addEventListener("click", function () {
@@ -234,7 +240,7 @@ updateHeartRateButton.addEventListener("click", function () {
 
 
 // =============================
-// SLEEP TRACKER 😴
+// SLEEP TRACKER
 // =============================
 
 updateSleepButton.addEventListener("click", function () {
@@ -267,7 +273,7 @@ updateSleepButton.addEventListener("click", function () {
 
 
 // =============================
-// OVERALL HEALTH SUMMARY 🩺
+// OVERALL HEALTH SUMMARY
 // =============================
 
 function updateOverallHealth() {
@@ -286,42 +292,28 @@ function updateOverallHealth() {
 
     let score = 0;
 
-    if (steps >= 8000) {
-        score++;
-    }
-
-    if (workouts >= 3) {
-        score++;
-    }
-
-    if (heartRate >= 60 && heartRate <= 100) {
-        score++;
-    }
-
-    if (sleep >= 7 && sleep <= 9) {
-        score++;
-    }
+    if (steps >= 8000) score++;
+    if (workouts >= 3) score++;
+    if (heartRate >= 60 && heartRate <= 100) score++;
+    if (sleep >= 7 && sleep <= 9) score++;
 
     if (score === 4) {
 
-        overallHealthStatus.textContent =
-            "Excellent! 🌟";
+        overallHealthStatus.textContent = "Excellent! 🌟";
 
         overallHealthMessage.textContent =
             "Your activity, workouts, heart rate and sleep are all looking good. Keep up the healthy routine!";
 
     } else if (score >= 2) {
 
-        overallHealthStatus.textContent =
-            "Good Progress! 💪";
+        overallHealthStatus.textContent = "Good Progress! 💪";
 
         overallHealthMessage.textContent =
             "You're doing well overall. Keep staying active and work on the areas that need improvement.";
 
     } else {
 
-        overallHealthStatus.textContent =
-            "Needs Improvement 🌱";
+        overallHealthStatus.textContent = "Needs Improvement 🌱";
 
         overallHealthMessage.textContent =
             "Try to increase your daily activity, maintain regular workouts and get enough sleep.";
@@ -330,7 +322,7 @@ function updateOverallHealth() {
 
 
 // =============================
-// PERSONALIZED RECOMMENDATION 💡
+// PERSONALIZED RECOMMENDATION
 // =============================
 
 function updateRecommendation() {
@@ -349,7 +341,6 @@ function updateRecommendation() {
 
     const intake =
         Number(intakeValue.textContent.replace(/,/g, "")) || 0;
-
 
     if (sleep < 6) {
 
@@ -390,7 +381,7 @@ function updateRecommendation() {
 
 
 // =============================
-// PROGRESS REPORT 📊
+// PROGRESS REPORT
 // =============================
 
 function updateProgressReport() {
@@ -413,7 +404,6 @@ function updateProgressReport() {
     const sleep =
         Number(sleepValue.textContent) || 0;
 
-
     document.getElementById("reportSteps").textContent =
         steps.toLocaleString();
 
@@ -432,12 +422,8 @@ function updateProgressReport() {
     document.getElementById("reportSleep").textContent =
         sleep + " hours";
 
-
-    // REPORT SUMMARY
-
     const reportSummary =
         document.getElementById("reportSummary");
-
 
     if (goal >= 80 && steps >= 8000 && workouts >= 3) {
 
@@ -458,50 +444,63 @@ function updateProgressReport() {
 
 
 // =============================
-// RUNNING ACTIVITY 🏃‍♀️
+// SAVE WORKOUT TO MONGODB
+// =============================
+
+async function saveWorkout(activity, duration, calories) {
+
+    try {
+
+        const response = await fetch(`${API_URL}/api/workouts`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                activity: activity,
+                duration: duration,
+                calories: calories
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Unable to save workout.");
+        }
+
+        alert(activity + " workout saved successfully! 💪");
+
+        await loadBackendData();
+
+    } catch (error) {
+
+        console.error("Error saving workout:", error);
+        alert("Could not save workout. Please check your backend server.");
+    }
+}
+
+
+// =============================
+// ACTIVITY BUTTONS
 // =============================
 
 document.getElementById("runningButton")
     .addEventListener("click", function () {
-
-        alert("Running workout completed! 🏃‍♀️🔥");
-
+        saveWorkout("Running", 30, 220);
     });
-
-
-// =============================
-// STRENGTH ACTIVITY 🏋️‍♀️
-// =============================
 
 document.getElementById("strengthButton")
     .addEventListener("click", function () {
-
-        alert("Strength workout completed! 🏋️‍♀️🔥");
-
+        saveWorkout("Strength", 45, 300);
     });
-
-
-// =============================
-// CYCLING ACTIVITY 🚴‍♀️
-// =============================
 
 document.getElementById("cyclingButton")
     .addEventListener("click", function () {
-
-        alert("Cycling workout completed! 🚴‍♀️🔥");
-
+        saveWorkout("Cycling", 40, 280);
     });
-
-
-// =============================
-// YOGA ACTIVITY 🧘‍♀️
-// =============================
 
 document.getElementById("yogaButton")
     .addEventListener("click", function () {
-
-        alert("Yoga workout completed! 🧘‍♀️✨");
-
+        saveWorkout("Yoga", 30, 150);
     });
 
 
@@ -509,141 +508,175 @@ document.getElementById("yogaButton")
 // LOAD BACKEND DATA
 // =============================
 
-Promise.all([
+async function loadBackendData() {
 
-    fetch("http://localhost:3000/api/steps")
-        .then(response => response.json()),
+    try {
 
-    fetch("http://localhost:3000/api/workouts")
-        .then(response => response.json()),
+        const [
+            stepsResponse,
+            workoutsResponse,
+            caloriesResponse,
+            goalResponse,
+            activitiesResponse
+        ] = await Promise.all([
 
-    fetch("http://localhost:3000/api/calories")
-        .then(response => response.json()),
+            fetch(`${API_URL}/api/steps`),
+            fetch(`${API_URL}/api/workouts`),
+            fetch(`${API_URL}/api/calories`),
+            fetch(`${API_URL}/api/goal`),
+            fetch(`${API_URL}/api/activities`)
 
-    fetch("http://localhost:3000/api/goal")
-        .then(response => response.json()),
+        ]);
 
-    fetch("http://localhost:3000/api/activities")
-        .then(response => response.json())
+        if (
+            !stepsResponse.ok ||
+            !workoutsResponse.ok ||
+            !caloriesResponse.ok ||
+            !goalResponse.ok ||
+            !activitiesResponse.ok
+        ) {
+            throw new Error("Backend returned an error.");
+        }
 
-])
-
-.then(([stepsData, workoutsData, caloriesData, goalData, activitiesData]) => {
-
-
-    // STEPS
-
-    stepsValue.textContent =
-        stepsData.steps.toLocaleString();
-
-    let stepsPercentage =
-        (stepsData.steps / stepsData.goal) * 100;
-
-    if (stepsPercentage > 100) {
-        stepsPercentage = 100;
+        const stepsData = await stepsResponse.json();
+        const workoutsData = await workoutsResponse.json();
+        const caloriesData = await caloriesResponse.json();
+        const goalData = await goalResponse.json();
+        const activitiesData = await activitiesResponse.json();
+        // STORE BACKEND DATA IN REDUX
+fitnessStore.dispatch({
+    type: "UPDATE_DASHBOARD",
+    payload: {
+        steps: stepsData,
+        workouts: workoutsData,
+        calories: caloriesData,
+        goal: goalData,
+        activities: activitiesData
     }
-
-    stepsProgress.textContent =
-        Math.round(stepsPercentage) + "%";
-
-
-    // WORKOUTS
-
-    workoutsValue.textContent =
-        workoutsData.workouts;
-
-    let workoutPercentage =
-        (workoutsData.workouts / workoutsData.goal) * 100;
-
-    if (workoutPercentage > 100) {
-        workoutPercentage = 100;
-    }
-
-    workoutsProgress.textContent =
-        Math.round(workoutPercentage) + "%";
-
-
-    // CALORIES
-
-    caloriesValue.textContent =
-        caloriesData.calories.toLocaleString();
-
-    let caloriePercentage =
-        (caloriesData.calories / caloriesData.goal) * 100;
-
-    if (caloriePercentage > 100) {
-        caloriePercentage = 100;
-    }
-
-    caloriesProgress.textContent =
-        Math.round(caloriePercentage) + "%";
-
-
-    // GOAL
-
-    const goalPercentage =
-        Math.round(
-            (goalData.completed / goalData.goal) * 100
-        );
-
-    goalValue.textContent =
-        goalPercentage + "%";
-
-    if (goalPercentage >= 100) {
-        goalMessage.textContent =
-            "Goal achieved! 🎉";
-    } else if (goalPercentage >= 75) {
-        goalMessage.textContent =
-            "Almost there! 💪";
-    } else if (goalPercentage >= 50) {
-        goalMessage.textContent =
-            "Keep going! 🔥";
-    } else {
-        goalMessage.textContent =
-            "You've got this! 🌟";
-    }
-
-
-    // ACTIVITIES
-
-    document.querySelector("#runningActivity p").textContent =
-        activitiesData.running.duration +
-        " min • " +
-        activitiesData.running.calories +
-        " kcal";
-
-    document.querySelector("#strengthButton p").textContent =
-        activitiesData.strength.duration +
-        " min • " +
-        activitiesData.strength.calories +
-        " kcal";
-
-    document.querySelector("#cyclingButton p").textContent =
-        activitiesData.cycling.duration +
-        " min • " +
-        activitiesData.cycling.calories +
-        " kcal";
-
-    document.querySelector("#yogaButton p").textContent =
-        activitiesData.yoga.duration +
-        " min • " +
-        activitiesData.yoga.calories +
-        " kcal";
-
-
-    // UPDATE SUMMARY AND REPORT ONCE
-
-    updateOverallHealth();
-    updateRecommendation();
-    updateProgressReport();
-
-})
-
-.catch(error => {
-
-    console.error("Error loading backend data:", error);
-
 });
+
+const reduxData = fitnessStore.getState();
+console.log("Redux Store Data:", reduxData);
+const reduxSteps = reduxData.steps;
+const reduxWorkouts = reduxData.workouts;
+const reduxCalories = reduxData.calories;
+const reduxGoal = reduxData.goal;
+const reduxActivities = reduxData.activities;
+
+
+        // STEPS
+
+        stepsValue.textContent =
+            reduxSteps.steps.toLocaleString();
+
+        let stepsPercentage =
+            Math.min((reduxSteps.steps / reduxSteps.goal) * 100, 100);
+
+        stepsProgress.textContent =
+            Math.round(stepsPercentage) + "%";
+
+
+        // WORKOUTS FROM MONGODB
+
+        const totalWorkouts = reduxWorkouts.length;
+        const workoutGoal = 5;
+
+        workoutsValue.textContent = totalWorkouts;
+
+        let workoutPercentage =
+            Math.min((totalWorkouts / workoutGoal) * 100, 100);
+
+        workoutsProgress.textContent =
+            Math.round(workoutPercentage) + "%";
+
+
+        // CALORIES FROM MONGODB
+
+        caloriesValue.textContent =
+            reduxCalories.calories.toLocaleString();
+
+        let caloriePercentage =
+            Math.min((reduxCalories.calories / reduxCalories.goal) * 100, 100);
+
+        caloriesProgress.textContent =
+            Math.round(caloriePercentage) + "%";
+
+
+        // GOAL
+
+        const goalPercentage =
+    Math.round((reduxGoal.completed / reduxGoal.goal) * 100);
+
+        goalValue.textContent = goalPercentage + "%";
+
+        if (goalPercentage >= 100) {
+            goalMessage.textContent = "Goal achieved! 🎉";
+        } else if (goalPercentage >= 75) {
+            goalMessage.textContent = "Almost there! 💪";
+        } else if (goalPercentage >= 50) {
+            goalMessage.textContent = "Keep going! 🔥";
+        } else {
+            goalMessage.textContent = "You've got this! 🌟";
+        }
+
+
+        // ACTIVITIES
+
+        // ACTIVITIES
+
+document.querySelector("#runningActivity p").textContent =
+    reduxActivities.running.duration + " min • " +
+    reduxActivities.running.calories + " kcal";
+
+document.querySelector("#strengthButton p").textContent =
+    reduxActivities.strength.duration + " min • " +
+    reduxActivities.strength.calories + " kcal";
+
+document.querySelector("#cyclingButton p").textContent =
+    reduxActivities.cycling.duration + " min • " +
+    reduxActivities.cycling.calories + " kcal";
+
+document.querySelector("#yogaButton p").textContent =
+    reduxActivities.yoga.duration + " min • " +
+    reduxActivities.yoga.calories + " kcal";
+
+
+        // UPDATE SUMMARY AND REPORT
+
+        updateOverallHealth();
+        updateRecommendation();
+        updateProgressReport();
+
+    } catch (error) {
+
+        console.error("Error loading backend data:", error);
+
+    }
+}
+
+
+// LOAD DATA WHEN PAGE OPENS
+// THIRD-PARTY API - MOTIVATIONAL QUOTES
+
+async function loadMotivationQuote() {
+    try {
+        const response = await fetch("https://dummyjson.com/quotes/random");
+
+        if (!response.ok) {
+            throw new Error("Unable to fetch quote");
+        }
+
+        const data = await response.json();
+
+        document.querySelector("#motivationQuote").textContent = data.quote;
+
+    } catch (error) {
+        console.error("Motivation API Error:", error);
+    }
+}
+
+loadMotivationQuote();
+loadBackendData();
 
 
 // =============================
